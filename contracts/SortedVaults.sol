@@ -38,8 +38,6 @@ contract SortedVaults {
      * @dev Add a node to the list
      * @param _id Node's id
      * @param _NICR Node's NICR
-     * @param _prevId Id of previous node for the insert position
-     * @param _nextId Id of next node for the insert position
      */
 
     function insert (address _id, uint256 _NICR) external onlyBorrowingOrVaultManager {
@@ -139,8 +137,6 @@ contract SortedVaults {
      * @dev Re-insert the node at a new position, based on its new NICR
      * @param _id Node's id
      * @param _newNICR Node's new NICR
-     * @param _prevId Id of previous node for the new insert position
-     * @param _nextId Id of next node for the new insert position
      */
     function reInsert(address _id, uint256 _newNICR) external onlyBorrowingOrVaultManager{
         // List must contain the node
@@ -263,8 +259,6 @@ contract SortedVaults {
     /*
      * @dev Find the insert position for a new node with the given NICR
      * @param _NICR Node's NICR
-     * @param _prevId Id of previous node for the insert position
-     * @param _nextId Id of next node for the insert position
      */
     function findInsertPosition(uint256 _NICR) external view returns (address, address) {
         return _findInsertPosition(_NICR);
